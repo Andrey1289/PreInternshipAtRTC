@@ -2,9 +2,11 @@ package org.andrey.api;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.andrey.api.util.SetupBeforeClassUtil;
+import org.andrey.api.util.Specification;
 import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
@@ -16,8 +18,8 @@ public class Task5Test {
     private static String URL  ;
     private static String authToken;
 
-    @BeforeClass
-    public static void setup()  {
+    @BeforeEach
+    public void setup()  {
         authToken = SetupBeforeClassUtil.getToken();
         URL = SetupBeforeClassUtil.getUrl();
     }

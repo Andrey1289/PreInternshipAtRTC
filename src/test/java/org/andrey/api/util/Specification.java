@@ -1,4 +1,4 @@
-package org.andrey.api;
+package org.andrey.api.util;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;

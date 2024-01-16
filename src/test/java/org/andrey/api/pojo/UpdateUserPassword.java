@@ -1,4 +1,4 @@
-package org.andrey.api;
+package org.andrey.api.pojo;
 
 public class UpdateUserPassword {
     private String password;

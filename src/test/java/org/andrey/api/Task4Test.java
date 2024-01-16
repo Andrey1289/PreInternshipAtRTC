@@ -2,9 +2,12 @@ package org.andrey.api;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.andrey.api.pojo.UpdateUserPassword;
+import org.andrey.api.util.SetupBeforeClassUtil;
+import org.andrey.api.util.Specification;
 import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Properties;
 
@@ -18,8 +21,8 @@ public class Task4Test {
     private static String URL  ;
     private static String authToken;
 
-   @BeforeClass
-    public static void setup() {
+   @BeforeEach
+    public void setup() {
 
        authToken = SetupBeforeClassUtil.getToken();
        URL = SetupBeforeClassUtil.getUrl();
@@ -37,7 +40,7 @@ public class Task4Test {
                 .body(updatePassword)
                 .when()
                 .put("/api/user")
-                .then().log().all().extract().response();
+                .then().extract().response();
          Properties properties = SetupBeforeClassUtil.getProperties();
         Assert.assertEquals("User password successfully changed", response.jsonPath().getString("info.message"));
         Assert.assertEquals("success", response.jsonPath().getString("info.status"));

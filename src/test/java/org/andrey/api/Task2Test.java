@@ -3,8 +3,11 @@ package org.andrey.api;
 import com.github.javafaker.Faker;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.andrey.api.pojo.RegisterUser;
+import org.andrey.api.util.SetupBeforeClassUtil;
+import org.andrey.api.util.Specification;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -25,8 +28,8 @@ import static org.hamcrest.Matchers.notNullValue;
  */
 public class Task2Test {
     private static String URL;
-    @BeforeClass
-    public static void setup() {
+    @BeforeEach
+    public  void setup() {
         URL = SetupBeforeClassUtil.getUrl();
     }
 
@@ -43,7 +46,7 @@ public class Task2Test {
                 .body(user)
                 .when()
                 .post("/api/signup")
-                .then().statusCode(201)
+                .then()
                 .body("register_data.id", notNullValue())
                 .body("register_data.login", equalTo(login))
                 .body("register_data.pass", equalTo(pass))

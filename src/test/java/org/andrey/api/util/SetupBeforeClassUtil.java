@@ -1,9 +1,10 @@
-package org.andrey.api;
+package org.andrey.api.util;
 
 import io.restassured.RestAssured;
 import io.restassured.config.LogConfig;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.andrey.api.pojo.UserToken;
 
 import java.io.*;
 import java.util.Properties;

@@ -3,8 +3,11 @@ package org.andrey.api;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.andrey.api.util.SetupBeforeClassUtil;
+import org.andrey.api.util.Specification;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -33,8 +36,8 @@ public class Task3Test {
     private static RequestSpecification requestSpec;
     private static int gameId;
 
-    @BeforeClass
-    public static void setup() {
+    @BeforeEach
+    public  void setup() {
         authToken = SetupBeforeClassUtil.getToken();
         URL = SetupBeforeClassUtil.getUrl();
         requestSpec = Specification.requestSpecification(URL, ContentType.JSON);

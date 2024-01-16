@@ -2,6 +2,7 @@ package org.andrey.api;
 
 
 import io.restassured.http.ContentType;
+import org.andrey.api.util.SetupBeforeClassUtil;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,7 +29,7 @@ public class Task1Test {
                 .contentType(ContentType.JSON)
                 .when()
                 .get(URL+"/api/users")
-                .then().log().all()
+                .then()
                 .assertThat().statusCode(200)
                 .extract().body().jsonPath().get();
         Assert.assertNotNull(users);

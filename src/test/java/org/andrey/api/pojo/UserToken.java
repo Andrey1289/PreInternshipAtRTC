@@ -1,4 +1,4 @@
-package org.andrey.api;
+package org.andrey.api.pojo;
 
 public class UserToken {
     private String password;

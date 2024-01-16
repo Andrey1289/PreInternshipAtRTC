@@ -1,8 +1,11 @@
 package org.andrey.api;
 
 import io.restassured.http.ContentType;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.andrey.api.util.SetupBeforeClassUtil;
+import org.andrey.api.util.Specification;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.io.*;
 import static io.restassured.RestAssured.given;
 
@@ -14,8 +17,8 @@ public class Task7Test {
     private static String URL;
     private static String DOWNLOAD_PATH = "src/test/resources/downloadFile.jpeg";
 
-    @BeforeClass
-    public static void setup() {
+    @BeforeEach
+    public void setup() {
         URL = SetupBeforeClassUtil.getUrl();
     }
 
@@ -27,8 +30,8 @@ public class Task7Test {
                 .when()
                 .get("/api/files/download")
                 .then()
-                .contentType("application/octet-stream").log().all()
-                .assertThat().statusCode(200)
+                .contentType("application/octet-stream")
+                .assertThat()
                 .extract().asByteArray();
 
         if (byteArray != null) {

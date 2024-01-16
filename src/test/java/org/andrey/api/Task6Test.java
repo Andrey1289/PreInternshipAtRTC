@@ -3,9 +3,12 @@ package org.andrey.api;
 import com.github.javafaker.Faker;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.andrey.api.pojo.RegisterUser;
+import org.andrey.api.util.SetupBeforeClassUtil;
+import org.andrey.api.util.Specification;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Properties;
 
@@ -26,8 +29,8 @@ public class Task6Test {
     private static String URL;
     private static String authToken;
 
-    @BeforeClass
-    public static void setup() {
+    @BeforeEach
+    public void setup() {
         authToken = SetupBeforeClassUtil.getToken();
         URL = SetupBeforeClassUtil.getUrl();
     }
@@ -63,8 +66,8 @@ public class Task6Test {
                 .body("info.message", equalTo("User successfully deleted"));
 
     }
-    @AfterClass
-    public static void createUserAgain(){
+    @AfterEach
+    public void createUserAgain(){
         Specification.installSpecification(Specification.requestSpecification(URL, ContentType.JSON),
                 Specification.responseSpecification(201));;
         Faker faker = new Faker();
@@ -76,7 +79,7 @@ public class Task6Test {
                 .body(user)
                 .when()
                 .post("/api/signup")
-                .then().statusCode(201)
+                .then()
                 .body("register_data.id", notNullValue())
                 .body("register_data.login", equalTo(login))
                 .body("register_data.pass", equalTo(pass))

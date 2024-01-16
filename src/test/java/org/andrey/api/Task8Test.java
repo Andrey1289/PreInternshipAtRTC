@@ -1,8 +1,10 @@
 package org.andrey.api;
 
 import io.restassured.specification.RequestSpecification;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.andrey.api.util.SetupBeforeClassUtil;
+import org.andrey.api.util.Specification;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertTrue;
 
@@ -18,8 +20,8 @@ public class Task8Test {
     private static String URL;
     private static RequestSpecification requestSpec;
 
-    @BeforeClass
-    public static void setup() {
+    @BeforeEach
+    public void setup() {
         URL = SetupBeforeClassUtil.getUrl();
         requestSpec = Specification.requestSpecification(URL, ContentType.MULTIPART);
     }
