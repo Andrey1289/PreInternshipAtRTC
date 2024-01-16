@@ -1,0 +1,35 @@
+{
+  "company": "Example Company",
+  "description": "This is a sample game description.",
+  "dlcs": [
+    {
+      "description": "Additional content description",
+      "dlcName": "Expansion Pack 1",
+      "isDlcFree": false,
+      "price": 9.99,
+      "rating": 4.5,
+      "similarDlc": {
+        "dlcNameFromAnotherGame": "Cross-game DLC",
+        "isFree": false
+      }
+    }
+  ],
+  "gameId": 0,
+  "genre": "Adventure",
+  "isFree": false,
+  "price": 19.99,
+  "publish_date": "2024-01-11T05:14:08.690Z",
+  "rating": 4.0,
+  "requiredAge": true,
+  "requirements": {
+    "hardDrive": 512,
+    "osName": "Windows 10",
+    "ramGb": 8,
+    "videoCard": "NVIDIA GeForce GTX 1060"
+  },
+  "tags": [
+    "Action",
+    "Single Player"
+  ],
+  "title": "Awesome Adventure Game"
+}

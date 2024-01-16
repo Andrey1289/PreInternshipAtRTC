@@ -1,0 +1,7 @@
+5Вывести количество 5х классов
+
+SELECT COUNT(*) AS count_5_classes
+FROM Class
+WHERE name LIKE '5%';
+
+  ответ 2
